@@ -1,15 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-//Category list
-export const category = [
-  { name: "Electronics" },
-  { name: "Bags" },
-  { name: "Outdoor" },
-  { name: "Furniture" },
-  { name: "Health" },
-];
+import { category } from "@/lib/constants";
 
 function Category({
   selectedCategory,
