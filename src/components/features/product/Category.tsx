@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+//Category list
 export const category = [
   { name: "Electronics" },
   { name: "Bags" },
@@ -31,7 +32,6 @@ function Category({
               "flex items-center gap-2 hover:bg-orange-400"
             )}
             onClick={() => {
-              console.log("ll");
               includeCategory(category.name);
             }}
           >

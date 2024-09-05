@@ -11,6 +11,8 @@ interface CartState {
 export const useCartStore = create<CartState>()((set) => ({
   cartItemNumber: 0,
   cartItems: [],
+
+  //actions
   increase: () =>
     set((state) => ({ cartItemNumber: state.cartItemNumber + 1 })),
   decrease: () =>

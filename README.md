@@ -16,3 +16,7 @@ First, run the development server:
 pnpm dev
 
 ```
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

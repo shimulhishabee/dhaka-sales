@@ -16,15 +16,15 @@ import {
 } from "@/components/ui/select";
 
 export default function ProductList({ products }: { products: IProduct[] }) {
-  //   const [products, setProducts] = useState<IProduct[]>();
   const [selectedCategory, setSelectedCategory] = useState<any>([]);
   const [selectedRating, setSelectedRating] = useState(0);
-  const cartItems = useCartStore((state) => state.cartItems);
   const [sortValue, setSortValue] = useState("price_low_to_high");
-  console.log(cartItems);
+
   const filteredProducts = useMemo(() => {
+    /**
+     * Filter product based on category and rating
+     */
     return products?.filter((product) => {
-      console.log(product.rating, selectedRating);
       return (
         (selectedCategory.length === 0 ||
           selectedCategory.includes(product.category)) &&
@@ -34,6 +34,9 @@ export default function ProductList({ products }: { products: IProduct[] }) {
   }, [selectedCategory, selectedRating, products, sortValue]);
 
   const includeCategory = (name: string) => {
+    /**
+     * Includes the category also check if there is any duplicate
+     */
     if (selectedCategory.includes(name)) {
       const filteredCategoryList = selectedCategory.filter(
         (category: string) => category !== name
@@ -48,13 +51,9 @@ export default function ProductList({ products }: { products: IProduct[] }) {
     setSelectedRating(rating);
   };
   const handleSort = (value: string) => {
-    // console.log(value);
     setSortValue(value);
   };
 
-  useEffect(() => {
-    console.log(sortValue);
-  }, [sortValue]);
   return (
     <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 p-6">
       <div className="bg-background rounded-lg shadow-sm p-6">

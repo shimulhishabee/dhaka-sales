@@ -9,22 +9,22 @@ import React from "react";
 function ProductCard({ product }: { product: IProduct }) {
   const setCartItems = useCartStore((state) => state.setCartItems);
   const cartItems = useCartStore((state) => state.cartItems);
-  const cartItemNumber = useCartStore((state) => state.cartItemNumber);
   const increase = useCartStore((state) => state.increase);
-  console.log(cartItemNumber);
   return (
     <Card
       key={product.id}
       className="relative overflow-hidden"
       onClick={() => {
+        /**
+         * Setting product to cart and increase the cart count
+         * here duplicate check is also conditioned
+         */
         increase();
         if (cartItems.some((item) => item.id === product.id)) {
           return;
         } else {
           setCartItems([...cartItems, product]);
         }
-        // setCartItems([...cartItems, product]);
-        // console.log("ll");
       }}
     >
       <Link href="#" className="absolute inset-0 z-10" prefetch={false}>
@@ -50,9 +50,8 @@ function ProductCard({ product }: { product: IProduct }) {
             onClick={() => {
               increase();
               setCartItems([...cartItems, product]);
-              console.log("ll");
             }}
-            // disabled={cartItems.some((item) => item.id === product.id)}
+            disabled={cartItems.some((item) => item.id === product.id)}
           >
             Add to Cart
           </Button>

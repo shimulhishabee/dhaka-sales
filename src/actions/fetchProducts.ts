@@ -1,6 +1,9 @@
 "use server";
 
 export const fetchProducts = async () => {
+  /**
+   * Create mock Data source
+   */
   const MockProductItem = {
     promise: Promise.resolve(
       new Response(
